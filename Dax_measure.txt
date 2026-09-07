@@ -1,0 +1,53 @@
+=========================================================
+DANH SÁCH DAX MEASURES 
+=========================================================
+
+-- 1. Tổng số sản phẩm
+Tong_so_san_pham = COUNTROWS(phones)
+
+-- 2. Giá trung bình
+Gia_trung_binh = AVERAGE(phones[price])
+
+-- 3. Giá thấp nhất / cao nhất
+Gia_thap_nhat = MIN(phones[price])
+Gia_cao_nhat = MAX(phones[price])
+
+-- 4. Số sản phẩm đang giảm giá (điều kiện lọc trong CALCULATE)
+So_sp_dang_giam_gia = CALCULATE(COUNTROWS(phones), phones[discount_percent] > 0)
+
+-- 5. % giảm giá trung bình (chỉ tính trên các máy CÓ giảm giá)
+Phan_tram_giam_TB = CALCULATE(AVERAGE(phones[discount_percent]), phones[discount_percent] > 0)
+
+-- 6. Tổng số tiền được giảm (cộng dồn toàn bộ)
+Tong_tien_da_giam = SUM(phones[so_tien_giam])
+
+-- 7. RAM trung bình (bỏ qua NULL tự động vì AVERAGE tự loại)
+RAM_trung_binh = AVERAGE(phones[ram_gb])
+
+-- 8. Hãng có giá trung bình cao nhất (dùng để hiển thị lên Card)
+--    Kỹ thuật: TOPN kết hợp VAR để lấy "brand" ứng với giá trung bình cao nhất
+Hang_gia_cao_nhat =
+VAR BangXepHang =
+    ADDCOLUMNS(
+        VALUES(phones[brand]),
+        "AvgPrice", CALCULATE(AVERAGE(phones[price]))
+    )
+RETURN
+    MAXX(TOPN(1, BangXepHang, [AvgPrice], DESC), phones[brand])
+
+-- 9. % sản phẩm thuộc phân khúc "Trên 20 triệu" so với tổng
+Ty_le_cao_cap =
+DIVIDE(
+    CALCULATE(COUNTROWS(phones), phones[phan_khuc_gia] = "Trên 20 triệu"),
+    [Tong_so_san_pham]
+)
+
+-- 10. Xếp hạng giảm giá (có tie-breaker để tránh lỗi "Top N bị hòa")
+--     Ưu tiên % giảm giá trước, nếu trùng thì xét thêm số tiền giảm tuyệt đối
+Xep_hang_giam_gia =
+RANKX(
+    ALL(phones),
+    phones[discount_percent] * 1000000 + (phones[old_price] - phones[price]),
+    ,
+    DESC
+)
