@@ -22,7 +22,7 @@ Thu thập và phân tích dữ liệu giá, cấu hình, khuyến mãi của đ
 - Định vị thương hiệu: Giá trung bình theo hãng phản ánh đúng định vị thị trường thực tế — Apple dẫn đầu về giá, trong khi Tecno và Nokia thuộc nhóm giá thấp nhất.
 - Khuyến mãi: Trong số các sản phẩm đang giảm giá, tổng giá trị được giảm đạt 185.880.000đ (tổng giá gốc 1.451.860.000đ so với tổng giá bán 1.265.980.000đ). Xiaomi Redmi 17T Pro 5G là sản phẩm giảm sâu nhất được ghi nhận (23%, tương đương 5.680.000đ).
 
-## Dashboard
+
 
 ## Dashboard
 
