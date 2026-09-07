@@ -27,7 +27,7 @@ Thu thập và phân tích dữ liệu giá, cấu hình, khuyến mãi của đ
 ## Dashboard
 
 <p align="center">
-  <img src="/images/phone_analysis_dashboard_page-0001.png" alt="Power BI Dashboard" width="80%">
+  <img src="/images/phone_analysis_dashboard_page-0001.jpg" alt="Power BI Dashboard" width="80%">
 </p>
 
 
