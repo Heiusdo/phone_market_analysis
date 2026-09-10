@@ -34,7 +34,7 @@ Thu thập và phân tích dữ liệu giá, cấu hình, khuyến mãi của đ
 ## Cách chạy lại project
 1. Chạy `crawl.py` để thu thập dữ liệu mới nhất
 2. Chạy `clean.py` để làm sạch dữ liệu thô
-3. Chạy các lệnh trong `create_database_and_queries.sql` để tạo database và import dữ liệu (nhớ sửa đường dẫn file CSV cho đúng máy bạn)
+3. Chạy các lệnh trong `create_database_and_queries.sql` để tạo database và import dữ liệu 
 4. Mở `phone_analysis_dashboard.pbix` bằng Power BI Desktop, kết nối lại nguồn dữ liệu nếu cần
 
 ## Tác giả
